@@ -5,7 +5,7 @@
         <Description>Node.js library</Description>
         <Authors>Microsoft</Authors>
         <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
-        <Version>20.1800.201</Version>
+        <Version>20.1800.202-alethic.1</Version>
         <RepositoryUrl Condition=" '$(RepositoryUrl)' == '' ">https://github.com/alethic/Microsoft.JavaScript.LibNode.git</RepositoryUrl>
         <RepositoryType Condition=" '$(RepositoryType)' == '' ">git</RepositoryType>
     </PropertyGroup>
