@@ -32,11 +32,11 @@ jobs:
     - name: Install winget
       if: runner.os == 'Windows'
       shell: pwsh
-      run: Install-Script -Name winget-install; winget-install -Force
+      run: Install-Script -Name winget-install; winget-install
     - name: Configure
       if: runner.os == 'Windows'
       shell: pwsh
-      run: winget configure .\.configurations\configuration.dsc.yaml
+      run: winget configure -f .\.configurations\configuration.dsc.yaml --disable-interactivity
       working-directory: .\ext\node
     - name: Build
       if: runner.os == 'Windows'
