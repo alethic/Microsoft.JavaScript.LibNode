@@ -15,9 +15,10 @@
         <None Include="..\..\icon.png" Pack="true" PackagePath="." />
     </ItemGroup>
 
-    <Target Name="ImportLibNode" BeforeTargets="BeforeBuild">
+    <Target Name="ImportLibNode" BeforeTargets="BeforeBuild" Inputs="..\..\ext\libnode-linux-x64\libnode.so.115" Outputs="$(IntermediateOutputPath)libnode.so">
         <Copy SourceFiles="..\..\ext\libnode-linux-x64\libnode.so.115" DestinationFiles="$(IntermediateOutputPath)libnode.so" />
         <ItemGroup>
+            <FileWrites Include="$(IntermediateOutputPath)libnode.so" />
             <None Include="$(IntermediateOutputPath)libnode.so" Visible="false" Pack="true" PackagePath="runtimes\linux-x64\native\libnode.so" />
         </ItemGroup>
     </Target>
