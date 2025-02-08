@@ -9,7 +9,7 @@
     <ItemGroup>
         <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
         <None Include="..\..\README.md" Pack="true" PackagePath="." />
-        <None Include="..\..\ext\libnode-osx-x64\libnode.dylib" Link ="runtimes\native\osx-x64\libnode.dylib" Pack="true" PackagePath="runtimes\native\osx-x64\libnode.dylib" />
+        <None Include="..\..\ext\libnode-osx-x64\libnode.dylib" Link ="runtimes\osx-x64\native\libnode.dylib" Pack="true" PackagePath="runtimes\osx-x64\native\libnode.dylib" />
     </ItemGroup>
     
 </Project>
