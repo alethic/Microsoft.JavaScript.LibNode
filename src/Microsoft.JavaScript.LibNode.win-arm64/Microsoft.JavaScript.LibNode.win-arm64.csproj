@@ -15,8 +15,11 @@
         <None Include="..\..\icon.png" Pack="true" PackagePath="." />
     </ItemGroup>
 
-    <ItemGroup>
-        <None Include="..\..\ext\libnode-win-arm64\libnode.dll" Visible="false" Pack="true" PackagePath="runtimes\win-arm64\native\libnode.dll" />
-    </ItemGroup>
+    <Target Name="ImportLibNode" BeforeTargets="BeforeBuild">
+        <Copy SourceFiles="..\..\ext\libnode-win-arm64\libnode.dll" DestinationFiles="$(IntermediateOutputPath)libnode.dll" />
+        <ItemGroup>
+            <None Include="$(IntermediateOutputPath)libnode.dll" Visible="false" Pack="true" PackagePath="runtimes\win-arm64\native\libnode.dll" />
+        </ItemGroup>
+    </Target>
 
 </Project>

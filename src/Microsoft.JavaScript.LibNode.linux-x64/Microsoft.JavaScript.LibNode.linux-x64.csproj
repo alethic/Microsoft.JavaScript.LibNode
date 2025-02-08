@@ -15,8 +15,11 @@
         <None Include="..\..\icon.png" Pack="true" PackagePath="." />
     </ItemGroup>
 
-    <ItemGroup>
-        <None Include="..\..\ext\libnode-linux-x64\libnode.so.*" Visible="false" Pack="true" PackagePath="runtimes\linux-x64\native\libnode.so" />
-    </ItemGroup>
+    <Target Name="ImportLibNode" BeforeTargets="BeforeBuild">
+        <Copy SourceFiles="..\..\ext\libnode-linux-x64\libnode.so.115" DestinationFiles="$(IntermediateOutputPath)libnode.so" />
+        <ItemGroup>
+            <None Include="$(IntermediateOutputPath)libnode.so" Visible="false" Pack="true" PackagePath="runtimes\linux-x64\native\libnode.so" />
+        </ItemGroup>
+    </Target>
 
 </Project>

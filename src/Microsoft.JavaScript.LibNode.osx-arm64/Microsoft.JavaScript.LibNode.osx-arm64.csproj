@@ -15,8 +15,11 @@
         <None Include="..\..\icon.png" Pack="true" PackagePath="." />
     </ItemGroup>
 
-    <ItemGroup>
-        <None Include="..\..\ext\libnode-osx-arm64\libnode.*.dylib" Visible="false" Pack="true" PackagePath="runtimes\osx-arm64\native\libnode.dylib" />
-    </ItemGroup>
+    <Target Name="ImportLibNode" BeforeTargets="BeforeBuild">
+        <Copy SourceFiles="..\..\ext\libnode-osx-arm64\libnode.115.dylib" DestinationFiles="$(IntermediateOutputPath)libnode.dylib" />
+        <ItemGroup>
+            <None Include="$(IntermediateOutputPath)libnode.dylib" Visible="false" Pack="true" PackagePath="runtimes\osx-arm64\native\libnode.dylib" />
+        </ItemGroup>
+    </Target>
 
 </Project>
