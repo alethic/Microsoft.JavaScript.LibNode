@@ -31,7 +31,8 @@ jobs:
         fetch-depth: 0
     - name: Install winget
       if: runner.os == 'Windows'
-      uses: Cyberboss/install-winget@v1
+      shell: pwsh
+      run: Install-Script -Name winget-install; winget-install
     - name: Configure
       if: runner.os == 'Windows'
       shell: pwsh
