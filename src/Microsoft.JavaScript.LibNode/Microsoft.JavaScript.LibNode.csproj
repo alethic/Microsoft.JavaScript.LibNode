@@ -9,19 +9,20 @@
 
     <ItemGroup>
         <None Include="buildTransitive\**\*" Pack="true" PackagePath="buildTransitive\%(RecursiveDir)%(Filename)%(Extension)" />
+        <None Include="lib\**\*" Pack="true" PackagePath="lib\%(RecursiveDir)%(Filename)%(Extension)" />
         <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
         <None Include="..\..\README.md" Pack="true" PackagePath="." />
         <None Include="..\..\icon.png" Pack="true" PackagePath="." />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.linux-arm64\Microsoft.JavaScript.LibNode.linux-arm64.csproj" />
-        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.linux-x64\Microsoft.JavaScript.LibNode.linux-x64.csproj" />
-        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.osx-arm64\Microsoft.JavaScript.LibNode.osx-arm64.csproj" />
-        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.osx-x64\Microsoft.JavaScript.LibNode.osx-x64.csproj" />
-        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-arm64\Microsoft.JavaScript.LibNode.win-arm64.csproj" />
-        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-x64\Microsoft.JavaScript.LibNode.win-x64.csproj" />
-        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-x86\Microsoft.JavaScript.LibNode.win-x86.csproj" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.linux-arm64\Microsoft.JavaScript.LibNode.linux-arm64.csproj" ReferenceOutputAssembly="true" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.linux-x64\Microsoft.JavaScript.LibNode.linux-x64.csproj" ReferenceOutputAssembly="true" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.osx-arm64\Microsoft.JavaScript.LibNode.osx-arm64.csproj" ReferenceOutputAssembly="true" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.osx-x64\Microsoft.JavaScript.LibNode.osx-x64.csproj" ReferenceOutputAssembly="true" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-arm64\Microsoft.JavaScript.LibNode.win-arm64.csproj" ReferenceOutputAssembly="true" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-x64\Microsoft.JavaScript.LibNode.win-x64.csproj" ReferenceOutputAssembly="true" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-x86\Microsoft.JavaScript.LibNode.win-x86.csproj" ReferenceOutputAssembly="true" />
     </ItemGroup>
 
 </Project>
