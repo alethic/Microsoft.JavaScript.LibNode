@@ -33,4 +33,4 @@ jobs:
       run: .\vcbuild dll
     - name: Build libnode (Unix)
       if: runner.os != 'Windows'
-      run: .\configure --shared
+      run: ./configure --shared
