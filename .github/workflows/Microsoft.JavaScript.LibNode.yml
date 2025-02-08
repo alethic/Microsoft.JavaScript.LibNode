@@ -36,7 +36,7 @@ jobs:
     - name: Configure
       if: runner.os == 'Windows'
       shell: pwsh
-      run: winget configure -f .\.configurations\configuration.dsc.yaml --disable-interactivity
+      run: winget configure -f .\.configurations\configuration.dsc.yaml --accept-configuration-agreements --disable-interactivity
       working-directory: .\ext\node
     - name: Build
       if: runner.os == 'Windows'
