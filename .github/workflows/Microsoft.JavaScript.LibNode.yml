@@ -15,15 +15,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sys:
+        rid:
         - win-x64
         - linux-x64
         - osx-x64
         - osx-arm64
-    name: Build libnode (${{ matrix.sys }})
-    runs-on: ${{ fromJSON('{"win-x86":["windows-2022"],"win-x64":["windows-2022"],"linux-x64":["ubuntu-22.04"],"osx-x64":["macos-13"],"osx-arm64":["macos-14"]}')[matrix.sys] }}
+    name: Build libnode (${{ matrix.rid }})
+    runs-on: ${{ fromJSON('{"win-x86":["windows-2022"],"win-x64":["windows-2022"],"linux-x64":["ubuntu-22.04"],"osx-x64":["macos-13"],"osx-arm64":["macos-14"]}')[matrix.rid] }}
     steps:
     - name: Checkout Source
       uses: actions/checkout@v4
       with:
+        submodules: true
         fetch-depth: 0
+    
