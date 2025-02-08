@@ -28,11 +28,16 @@ jobs:
       with:
         submodules: true
         fetch-depth: 0
-    - name: Build libnode (Windows)
+    - name: Configure
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: winget configure .\.configurations\configuration.dsc.yaml
+      working-directory: .\ext\node
+    - name: Build
       if: runner.os == 'Windows'
       run: .\vcbuild dll
       working-directory: .\ext\node
-    - name: Build libnode (Unix)
+    - name: Build
       if: runner.os != 'Windows'
       run: ./configure --shared
       working-directory: ./ext/node
