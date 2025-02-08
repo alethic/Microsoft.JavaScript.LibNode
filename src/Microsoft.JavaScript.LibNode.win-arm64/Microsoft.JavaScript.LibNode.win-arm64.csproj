@@ -2,12 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\ext\libnode-win-x64\libnode.*" Pack="true" PackagePath="runtimes/native" />
+        <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
+        <None Include="..\..\README.md" Pack="true" PackagePath="." />
+        <None Include="..\..\ext\libnode-win-arm64\libnode.dll" Link ="runtimes\native\win-arm64\libnode.dll" Pack="true" PackagePath="runtimes\native\win-arm64\libnode.dll" />
     </ItemGroup>
 
 </Project>

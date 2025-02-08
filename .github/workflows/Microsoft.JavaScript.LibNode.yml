@@ -62,3 +62,97 @@ jobs:
       with:
         name: libnode-${{ matrix.rid }}
         path: ./ext/node/out/Release/**/*
+  build:
+    name: Build
+    needs:
+    - build-libnode
+    timeout-minutes: 720
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install Powershell
+      run: |
+        sudo apt-get update && \
+        sudo apt-get install -y powershell
+    - name: Setup .NET 9.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v3
+      with:
+        versionSpec: 5.x
+    - name: Execute GitVersion
+      uses: gittools/actions/gitversion/execute@v3
+      with:
+        useConfigFile: true
+        configFilePath: GitVersion.yml
+    - name: Download libnode (win-x86)
+      uses: actions/download-artifact@v4
+      with:
+        name: libnode-win-x86
+        path: ./ext/libnode-win-x86
+    - name: Download libnode (win-x64)
+      uses: actions/download-artifact@v4
+      with:
+        name: libnode-win-x64
+        path: ./ext/libnode-win-x64
+    - name: Download libnode (win-arm64)
+      uses: actions/download-artifact@v4
+      with:
+        name: libnode-win-arm64
+        path: ./ext/libnode-win-arm64
+    - name: Download libnode (linux-x64)
+      uses: actions/download-artifact@v4
+      with:
+        name: libnode-linux-x64
+        path: ./ext/libnode-linux-x64
+    - name: Download libnode (linux-arm64)
+      uses: actions/download-artifact@v4
+      with:
+        name: libnode-linux-arm64
+        path: ./ext/libnode-linux-arm64
+    - name: Download libnode (osx-x64)
+      uses: actions/download-artifact@v4
+      with:
+        name: libnode-osx-x64
+        path: ./ext/libnode-osx-x64
+    - name: Download libnode (osx-arm64)
+      uses: actions/download-artifact@v4
+      with:
+        name: libnode-osx-arm64
+        path: ./ext/libnode-osx-arm64
+    - name: NuGet Restore
+      run: dotnet restore Microsoft.JavaScript.LibNode.sln
+    - name: Build
+      run: |
+        dotnet pack /m /bl \
+          -p:Configuration="Release" \
+          -p:Platform="Any CPU" \
+          -p:PreReleaseLabel=${GitVersion_PreReleaseLabel} \
+          -p:PreReleaseNumber=${GitVersion_WeightedPreReleaseNumber} \
+          -p:Version=${GitVersion_FullSemVer} \
+          -p:AssemblyVersion=${GitVersion_AssemblySemVer} \
+          -p:InformationalVersion=${GitVersion_InformationalVersion} \
+          -p:FileVersion=${GitVersion_AssemblySemFileVer} \
+          -p:PackageVersion=${GitVersion_FullSemVer} \
+          -p:RepositoryUrl="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git" \
+          -p:PackageProjectUrl="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" \
+          -p:BuildInParallel=true \
+          -p:CreateHardLinksForAdditionalFilesIfPossible=true \
+          -p:CreateHardLinksForCopyAdditionalFilesIfPossible=true \
+          -p:CreateHardLinksForCopyFilesToOutputDirectoryIfPossible=true \
+          -p:CreateHardLinksForCopyLocalIfPossible=true \
+          -p:CreateHardLinksForPublishFilesIfPossible=true \
+          -p:ContinuousIntegrationBuild=true \
+          --output dist \
+          Microsoft.JavaScript.LibNode.sln
+    - name: Upload MSBuild Log
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: msbuild.binlog
+        path: msbuild.binlog

@@ -2,9 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
+        <None Include="..\..\README.md" Pack="true" PackagePath="." />
+    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Microsoft.JavaScript.LibNode.linux-arm64\Microsoft.JavaScript.LibNode.linux-arm64.csproj" />

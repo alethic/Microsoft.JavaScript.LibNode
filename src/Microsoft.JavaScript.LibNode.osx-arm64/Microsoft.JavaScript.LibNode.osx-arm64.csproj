@@ -2,12 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\ext\libnode-osx-arm64\libnode.*" Pack="true" PackagePath="runtimes/native" />
+        <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
+        <None Include="..\..\README.md" Pack="true" PackagePath="." />
+        <None Include="..\..\ext\libnode-osx-arm64\libnode.dylib" Link ="runtimes\native\osx-arm64\libnode.dylib" Pack="true" PackagePath="runtimes\native\osx-arm64\libnode.dylib" />
     </ItemGroup>
 
 </Project>
