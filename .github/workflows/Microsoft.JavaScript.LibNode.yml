@@ -28,4 +28,9 @@ jobs:
       with:
         submodules: true
         fetch-depth: 0
-    
+    - name: Build libnode (Windows)
+      if: runner.os == 'Windows'
+      run: .\vcbuild dll
+    - name: Build libnode (Unix)
+      if: runner.os != 'Windows'
+      run: .\configure --shared
