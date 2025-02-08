@@ -1,6 +1,7 @@
 name: Microsoft.JavaScript.LibNode
 
 on:
+  workflow_dispatch:
   push:
     branches:
     - main
