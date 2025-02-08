@@ -170,9 +170,16 @@ jobs:
         tag: ${{ github.ref_name }}
         allowUpdates: true
         omitBodyDuringUpdate: true
-        artifacts: dist/nuget/*.nupkg,dist/jre/*.zip,dist/jre/*.tar.gz,dist/jdk/*.zip,dist/jdk/*.tar.gz,dist/tools/*.zip,dist/tools/*.tar.gz,dist/doc.zip
+        artifacts: dist/nuget/*.nupkg
         draft: false
         token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push NuGet (GitHub)
+      if: github.event_name != 'pull_request'
+      shell: pwsh
+      run: dotnet nuget push dist/nuget/*.nupkg --source $env:GITHUB_REPOS --api-key $env:GITHUB_TOKEN --skip-duplicate --no-symbols
+      env:
+        GITHUB_REPOS: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push NuGet
       if: github.ref_type == 'tag'
       shell: pwsh
