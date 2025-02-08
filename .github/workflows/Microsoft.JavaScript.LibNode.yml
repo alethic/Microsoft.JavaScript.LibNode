@@ -31,6 +31,8 @@ jobs:
     - name: Build libnode (Windows)
       if: runner.os == 'Windows'
       run: .\vcbuild dll
+      working-directory: .\ext\node
     - name: Build libnode (Unix)
       if: runner.os != 'Windows'
       run: ./configure --shared
+      working-directory: ./ext/node
