@@ -31,8 +31,6 @@ jobs:
     - name: Install winget
       if: runner.os == 'Windows'
       uses: Cyberboss/install-winget@v1
-      with:
-        wget_release_id: latest
     - name: Configure
       if: runner.os == 'Windows'
       shell: pwsh
