@@ -8,6 +8,7 @@
             <None Include="@(_LibNodeNativeLibraries)">
                 <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
                 <TargetPath>runtimes\%(_LibNodeNativeLibraries.RuntimeIdentifier)\native\%(_LibNodeNativeLibraries.Filename)%(_LibNodeNativeLibraries.Extension)</TargetPath>
+                <Pack>false</Pack>
             </None>
         </ItemGroup>
     </Target>

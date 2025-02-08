@@ -3,6 +3,7 @@
         <LangVersion Condition=" '$(LangVersion)' == '' ">11.0</LangVersion>
         <Title>Node.js library</Title>
         <Description>Node.js library</Description>
+        <Authors>Microsoft</Authors>
         <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
         <Version>20.1800.201</Version>
         <RepositoryUrl Condition=" '$(RepositoryUrl)' == '' ">https://github.com/alethic/Microsoft.JavaScript.LibNode.git</RepositoryUrl>
@@ -12,6 +13,7 @@
     <PropertyGroup Label="Package Info">
         <PackageProjectUrl  Condition=" '$(PackageProjectUrl)' == '' ">https://github.com/alethic/Microsoft.JavaScript.LibNode</PackageProjectUrl>
         <PackageVersion Condition=" '$(PackageVersion)' == '' ">$(Version)</PackageVersion>
+        <PackageTags>native JavaScript JS V8 library node.js node NodeAPI Node-API NAPI</PackageTags>
     </PropertyGroup>
 
 </Project>

@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <None Include="buildTransitive\**\*" Pack="true" PackagePath="buildTransitive\%(RecursiveDir)%(Filename)%(Extension)" />
         <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
         <None Include="..\..\README.md" Pack="true" PackagePath="." />
         <None Include="..\..\icon.png" Pack="true" PackagePath="." />

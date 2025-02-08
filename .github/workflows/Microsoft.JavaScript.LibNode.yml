@@ -81,15 +81,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v3
-      with:
-        versionSpec: 5.x
-    - name: Execute GitVersion
-      uses: gittools/actions/gitversion/execute@v3
-      with:
-        useConfigFile: true
-        configFilePath: GitVersion.yml
     - name: Download libnode (win-x86)
       uses: actions/download-artifact@v4
       with:
@@ -164,15 +155,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v3
-      with:
-        versionSpec: 5.x
-    - name: Execute GitVersion
-      id: GitVersion
-      uses: gittools/actions/gitversion/execute@v3
-      with:
-        useConfigFile: true
     - name: Download NuGet Packages
       uses: actions/download-artifact@v4
       with:
