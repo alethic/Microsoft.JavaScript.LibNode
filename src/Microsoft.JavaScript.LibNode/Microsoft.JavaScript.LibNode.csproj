@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.Build.NoTargets">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.linux-arm64\Microsoft.JavaScript.LibNode.linux-arm64.csproj" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.linux-x64\Microsoft.JavaScript.LibNode.linux-x64.csproj" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.osx-arm64\Microsoft.JavaScript.LibNode.osx-arm64.csproj" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.osx-x64\Microsoft.JavaScript.LibNode.osx-x64.csproj" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-arm64\Microsoft.JavaScript.LibNode.win-arm64.csproj" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-x64\Microsoft.JavaScript.LibNode.win-x64.csproj" />
+        <ProjectReference Include="..\Microsoft.JavaScript.LibNode.win-x86\Microsoft.JavaScript.LibNode.win-x86.csproj" />
+    </ItemGroup>
+
+</Project>

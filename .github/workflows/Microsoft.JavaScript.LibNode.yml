@@ -17,12 +17,15 @@ jobs:
       fail-fast: false
       matrix:
         rid:
+        - win-x86
         - win-x64
+        - win-arm64
         - linux-x64
+        - linux-arm64
         - osx-x64
         - osx-arm64
     name: Build libnode (${{ matrix.rid }})
-    runs-on: ${{ fromJSON('{"win-x86":["windows-2022"],"win-x64":["windows-2022"],"linux-x64":["ubuntu-22.04"],"osx-x64":["macos-13"],"osx-arm64":["macos-14"]}')[matrix.rid] }}
+    runs-on: ${{ fromJSON('{"win-x86":["windows-2022"],"win-x64":["windows-2022"],"linux-x64":["ubuntu-24.04"],"linux-arm64":["ubuntu-24.04-arm"],"osx-x64":["macos-13"],"osx-arm64":["macos-14"]}')[matrix.rid] }}
     steps:
     - name: Checkout Source
       uses: actions/checkout@v4
@@ -39,8 +42,16 @@ jobs:
       run: winget configure -f .\.configurations\configuration.dsc.yaml --accept-configuration-agreements --disable-interactivity
       working-directory: .\ext\node
     - name: Build
-      if: runner.os == 'Windows'
+      if: runner.os == 'Windows' && matrix.rid == 'win-x64'
       run: .\vcbuild dll
+      working-directory: .\ext\node
+    - name: Build
+      if: runner.os == 'Windows' && matrix.rid == 'win-x86'
+      run: .\vcbuild dll x86
+      working-directory: .\ext\node
+    - name: Build
+      if: runner.os == 'Windows' && matrix.rid == 'win-arm64'
+      run: .\vcbuild dll arm64
       working-directory: .\ext\node
     - name: Build
       if: runner.os != 'Windows'
@@ -49,5 +60,5 @@ jobs:
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
-        name: libnode--${{ matrix.rid }}
+        name: libnode-${{ matrix.rid }}
         path: ./ext/node/Release/**/*
