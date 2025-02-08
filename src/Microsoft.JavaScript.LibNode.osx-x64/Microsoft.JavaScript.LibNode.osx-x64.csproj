@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\..\ext\libnode-osx-x64\libnode.dylib" Link ="runtimes\osx-x64\native\libnode.dylib" Pack="true" PackagePath="runtimes\osx-x64\native\libnode.dylib" />
+        <None Include="..\..\ext\libnode-osx-x64\libnode.*.dylib" Pack="true" PackagePath="runtimes\osx-x64\native\libnode.dylib" />
     </ItemGroup>
     
 </Project>

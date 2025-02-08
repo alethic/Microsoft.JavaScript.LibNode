@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\..\ext\libnode-win-x86\libnode.dll" Link ="runtimes\win-x86\native\libnode.dll" Pack="true" PackagePath="runtimes\win-x86\native\libnode.dll" />
+        <None Include="..\..\ext\libnode-win-x86\libnode.dll" Pack="true" PackagePath="runtimes\win-x86\native\libnode.dll" />
     </ItemGroup>
 
 </Project>

@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\..\ext\libnode-linux-x64\libnode.so" Link ="runtimes\linux-x64\native\libnode.so" Pack="true" PackagePath="runtimes\linux-x64\native\libnode.so" />
+        <None Include="..\..\ext\libnode-linux-x64\libnode.so" Pack="true" PackagePath="runtimes\linux-x64\native\libnode.so" />
     </ItemGroup>
 
 </Project>
