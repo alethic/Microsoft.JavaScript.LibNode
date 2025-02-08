@@ -44,5 +44,5 @@ jobs:
       working-directory: .\ext\node
     - name: Build
       if: runner.os != 'Windows'
-      run: ./configure --shared
+      run: ./configure --shared && make -j4
       working-directory: ./ext/node
