@@ -4,11 +4,16 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIconUrl>icon.png</PackageIconUrl>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
         <None Include="..\..\README.md" Pack="true" PackagePath="." />
+        <None Include="..\..\icon.png" Pack="true" PackagePath="." />
+    </ItemGroup>
+    
+    <ItemGroup>
         <None Include="..\..\ext\libnode-linux-arm64\libnode.so" Link ="runtimes\linux-arm64\native\libnode.so" Pack="true" PackagePath="runtimes\linux-arm64\native\libnode.so" />
     </ItemGroup>
 

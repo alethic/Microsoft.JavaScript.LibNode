@@ -4,11 +4,16 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIconUrl>icon.png</PackageIconUrl>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
         <None Include="..\..\README.md" Pack="true" PackagePath="." />
+        <None Include="..\..\icon.png" Pack="true" PackagePath="." />
+    </ItemGroup>
+
+    <ItemGroup>
         <None Include="..\..\ext\libnode-win-arm64\libnode.dll" Link ="runtimes\win-arm64\native\libnode.dll" Pack="true" PackagePath="runtimes\win-arm64\native\libnode.dll" />
     </ItemGroup>
 
