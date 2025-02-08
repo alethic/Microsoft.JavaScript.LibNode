@@ -61,7 +61,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: libnode-${{ matrix.rid }}
-        path: ./ext/node/out/Release/**/*
+        path: ./ext/node/out/Release/libnode.*
   build:
     name: Build
     needs:
