@@ -9,13 +9,13 @@
 
     <ItemGroup>
         <None Include="buildTransitive\**\*" Pack="true" PackagePath="buildTransitive\%(RecursiveDir)%(Filename)%(Extension)" />
-        <None Include="..\..\ext\node\LICENSE" Pack="true" PackagePath="." />
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
         <None Include="..\..\README.md" Pack="true" PackagePath="." />
         <None Include="..\..\icon.png" Pack="true" PackagePath="." />
     </ItemGroup>
     
     <ItemGroup>
-        <None Include="..\..\ext\libnode-linux-arm64\libnode.so.*" Pack="true" PackagePath="runtimes\linux-arm64\native\libnode.so" />
+        <None Include="..\..\ext\libnode-linux-arm64\libnode.so.*" Visible="false" Pack="true" PackagePath="runtimes\linux-arm64\native\libnode.so" />
     </ItemGroup>
 
 </Project>
