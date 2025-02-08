@@ -148,7 +148,7 @@ jobs:
           -p:CreateHardLinksForCopyLocalIfPossible=true \
           -p:CreateHardLinksForPublishFilesIfPossible=true \
           -p:ContinuousIntegrationBuild=true \
-          --output dist \
+          --output dist/nuget \
           Microsoft.JavaScript.LibNode.sln
     - name: Upload MSBuild Log
       if: ${{ always() }}
@@ -156,3 +156,59 @@ jobs:
       with:
         name: msbuild.binlog
         path: msbuild.binlog
+    - name: Package NuGet Packages
+      run: tar czvf /tmp/nuget.tar.gz nuget
+      working-directory: dist
+    - name: Upload NuGet Packages
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget
+        path: /tmp/nuget.tar.gz
+  release:
+    name: Release
+    needs:
+    - build
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Setup .NET 9.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v3
+      with:
+        versionSpec: 5.x
+    - name: Execute GitVersion
+      id: GitVersion
+      uses: gittools/actions/gitversion/execute@v3
+      with:
+        useConfigFile: true
+    - name: Download NuGet Packages
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget
+        path: dist
+    - name: Restore NuGet Packages
+      run: tar xzvf nuget.tar.gz
+      working-directory: dist
+    - name: Create Release
+      if: github.ref_type == 'tag'
+      uses: ncipollo/release-action@v1.14.0
+      with:
+        tag: ${{ github.ref_name }}
+        allowUpdates: true
+        omitBodyDuringUpdate: true
+        artifacts: dist/nuget/*.nupkg,dist/jre/*.zip,dist/jre/*.tar.gz,dist/jdk/*.zip,dist/jdk/*.tar.gz,dist/tools/*.zip,dist/tools/*.tar.gz,dist/doc.zip
+        draft: false
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push NuGet
+      if: github.ref_type == 'tag'
+      shell: pwsh
+      run: dotnet nuget push dist/nuget/*.nupkg --source $env:NUGET_REPOS --api-key $env:NUGET_TOKEN --skip-duplicate
+      env:
+        NUGET_REPOS: https://api.nuget.org/v3/index.json
+        NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
