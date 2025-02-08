@@ -1,0 +1,4 @@
+[submodule "ext/node"]
+	path = ext/node
+	url = https://github.com/vmoroz/node.git
+	branch = libnode/v20.x
