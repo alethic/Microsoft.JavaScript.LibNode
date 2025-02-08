@@ -4,7 +4,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        
+        <_LibNodeNativeLibraries Include="$(MSBuildThisFileDirectory)..\runtimes\win-x86\native\libnode.dll" RuntimeIdentifier="win-x86" />
     </ItemGroup>
 
 </Project>

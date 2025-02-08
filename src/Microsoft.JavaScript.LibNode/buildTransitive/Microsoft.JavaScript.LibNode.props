@@ -3,8 +3,13 @@
         <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     </PropertyGroup>
 
-    <ItemGroup>
-        
-    </ItemGroup>
+    <Target Name="IncludeLibNodeNativeLibraries" BeforeTargets="AssignTargetPaths" Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net461'))">
+        <ItemGroup>
+            <None Include="@(_LibNodeNativeLibraries)">
+                <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+                <TargetPath>runtimes\%(_LibNodeNativeLibraries.RuntimeIdentifier)\native\%(_LibNodeNativeLibraries.Filename)%(_LibNodeNativeLibraries.Extension)</TargetPath>
+            </None>
+        </ItemGroup>
+    </Target>
 
 </Project>
