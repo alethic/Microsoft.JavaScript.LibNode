@@ -32,7 +32,7 @@ jobs:
     - name: Install winget-install
       if: runner.os == 'Windows'
       shell: pwsh
-      run: Install-Script winget-install
+      run: Install-Script winget-install -Force
     - name: Install winget
       if: runner.os == 'Windows'
       shell: pwsh
