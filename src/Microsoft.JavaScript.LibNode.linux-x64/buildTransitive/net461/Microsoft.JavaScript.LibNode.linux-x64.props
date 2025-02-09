@@ -4,7 +4,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <_LibNodeNativeLibraries Include="$(MSBuildThisFileDirectory)..\runtimes\linux-x64\native\libnode.so" RuntimeIdentifier="linux-x64" />
+        <_LibNodeNativeLibraries Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\libnode.so" RuntimeIdentifier="linux-x64" />
     </ItemGroup>
 
 </Project>
